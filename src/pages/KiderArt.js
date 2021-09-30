@@ -105,7 +105,7 @@ export default function KiderArt() {
                                         c5: [0, ']', "<", 'f', 'D',
                                             'orange', 'strawberry', 'avocado', 'cherries',
                                             'papaya'],
-                                        youtube: ['tMjALn2rPU4', '77Qfj2wEexM', 'VKIrg0HB-xg', 'BK3MSK1hYj0', 'tMjALn2rPU4', '77Qfj2wEexM', 'VKIrg0HB-xg', 'BK3MSK1hYj0', 'tMjALn2rPU4', '77Qfj2wEexM']
+                                        youtube: ['Jtli-gNelnk', '1P8ghUQI0UQ', 'XsARwI9mDC8', 'FDoW-AJsXsc', 'JIcuh9iBPpg', '77Qfj2wEexM', 'VKIrg0HB-xg', 'BK3MSK1hYj0', 'tMjALn2rPU4', '77Qfj2wEexM']
                                     }
                                 })
 

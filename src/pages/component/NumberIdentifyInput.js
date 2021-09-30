@@ -175,7 +175,7 @@ function Draw(props) {
                         Check
                     </Button>
 
-                 
+
                     <ModalVideo style={{width: '100%'}} channel='youtube' autoplay isOpen={isOpen} videoId={props.youtube} onClose={() => setOpen(false)} />
                     <div className="App">
 

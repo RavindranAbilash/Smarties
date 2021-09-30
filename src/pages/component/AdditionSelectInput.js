@@ -67,10 +67,10 @@ function Draw(props) {
 
         if(currentValue == props.correctAns){
             setAnchorEl(event.currentTarget);
-            setMathMarks([mathMarks[0],(mathMarks[1]+1),(mathMarks[2]+1)])
+            setMathMarks([mathMarks[0],(mathMarks[1]+1),(mathMarks[2]+1),mathMarks[3],mathMarks[4],mathMarks[5]])
         }else{
             setOpen(true)
-            setMathMarks([mathMarks[0],mathMarks[1],(mathMarks[2]+1)])
+            setMathMarks([mathMarks[0],mathMarks[1],(mathMarks[2]+1),mathMarks[3],mathMarks[4],mathMarks[5]])
         }
 
     };
