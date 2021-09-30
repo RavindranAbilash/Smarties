@@ -23,7 +23,9 @@
     "react-speech-recognition": "^3.8.2",
     "react-toastify": "^8.0.3",
     "styled-components": "^5.3.0",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "^1.1.2",
+    "tesseract.ts": "^1.1.2",
+    "tesseract.js": "^1.0.14"
   },
   "scripts": {
     "start": "react-scripts start",

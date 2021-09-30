@@ -61,43 +61,50 @@ function getSteps() {
 
 //Question 1
 function q1() {
-    return (<NumberIdentifyInput head={"1.How many balloons?"} img={NumberIdentification01} correctAns={"three"} youtube={'yuHFOuopiKQ'}/>);
+    return (<NumberIdentifyInput head={"1.How many books?"} img={NumberIdentification02} correctAns={5} youtube={'XTT5wuuhkU0'}/>);
+
 }
 
 function q2() {
-    return (<NumberIdentifyInput head={"2.How many books?"} img={NumberIdentification02} correctAns={"five"} youtube={'XTT5wuuhkU0'}/>);
+    return (<NumberIdentifyInput head={"2.How many balloons?"} img={NumberIdentification01} correctAns={3} youtube={'yuHFOuopiKQ'}/>);
 }
 
 function q3() {
-    return (<NumberIdentifyInput head={"3.How many penguins?"} img={NumberIdentification03} correctAns={"eight"} youtube={'6fq4p216c3s'}/>);
+    return (<NumberIdentifyInput head={"3.How many dogs?"} img={NumberIdentification08} correctAns={7} youtube={'Up8IwPj5VYY'}/>);
+
 }
 
 function q4() {
-    return (<NumberIdentifyInput head={"4.How many fish?"} img={NumberIdentification04} correctAns={"six"} youtube={'rCDve755QNo'}/>);
+    return (<NumberIdentifyInput head={"4.How many fish?"} img={NumberIdentification04} correctAns={6} youtube={'rCDve755QNo'}/>);
+
 }
 
 function q5() {
-    return (<NumberIdentifyInput head={"5.How many balls?"} img={NumberIdentification05} correctAns={"one"} youtube={'77M6r_M5QWY'}/>);
+    return (<NumberIdentifyInput head={"5.How many umbrellas?"} img={NumberIdentification07} correctAns={9} youtube={'p217hhl9nY0'}/>);
+
+
 }
 
 function q6() {
-    return (<NumberIdentifyInput head={"6.How many pencils?"} img={NumberIdentification06} correctAns={"two"} youtube={'op1879vlnq8'}/>);
+    return (<NumberIdentifyInput head={"6.How many ships?"} img={NumberIdentification10} correctAns={4} youtube={'X9R17dbAfQ8'}/>);
+
 }
 
 function q7() {
-    return (<NumberIdentifyInput head={"7.How many umbrellas?"} img={NumberIdentification07} correctAns={"nine"} youtube={'p217hhl9nY0'}/>);
+    return (<NumberIdentifyInput head={"7.How many penguins?"} img={NumberIdentification03} correctAns={8} youtube={'6fq4p216c3s'}/>);
 }
 
 function q8() {
-    return (<NumberIdentifyInput head={"8.How many dogs?"} img={NumberIdentification08} correctAns={"seven"} youtube={'Up8IwPj5VYY'}/>);
+    return (<NumberIdentifyInput head={"8.How many pencils?"} img={NumberIdentification06} correctAns={2} youtube={'op1879vlnq8'}/>);
 }
 
 function q9() {
-    return (<NumberIdentifyInput head={"9.How many hats?"} img={NumberIdentification09} correctAns={"ten"} youtube={'LW3lD7VgHY4'}/>);
+    return (<NumberIdentifyInput head={"9.How many penguins?"} img={NumberIdentification03} correctAns={8} youtube={'6fq4p216c3s'}/>);
 }
 
 function q10() {
-    return (<NumberIdentifyInput head={"10.How many ships?"} img={NumberIdentification10} correctAns={'four'} youtube={'X9R17dbAfQ8'}/>);
+    return (<NumberIdentifyInput head={"10.How many balls?"} img={NumberIdentification05} correctAns={1} youtube={'77M6r_M5QWY'}/>);
+
 }
 
 function getStepContent(stepIndex) {

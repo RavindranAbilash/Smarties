@@ -13,7 +13,11 @@ export default function  LetStart(props){
     console.log(props.location.state.detail)
     const url = props.location.state.detail;
     const val = props.location.state.val?props.location.state.val:null;
-    const correctAns = props.location.state.correctAns?props.location.state.correctAns:null;
+    const c1 = props.location.state.c1?props.location.state.c1:null;
+    const c2 = props.location.state.c2?props.location.state.c2:null;
+    const c3 = props.location.state.c3?props.location.state.c3:null;
+    const c4 = props.location.state.c4?props.location.state.c4:null;
+    const c5 = props.location.state.c5?props.location.state.c5:null;
     const youtube = props.location.state.youtube?props.location.state.youtube:null;
     return(
         <Container>
@@ -30,7 +34,7 @@ export default function  LetStart(props){
                                     ()=>{
                                         history.push({
                                             pathname: url,
-                                            state: { detail: val,answer:correctAns,youtube:youtube }
+                                            state: { detail: val,a1:c1,a2:c2,a3:c3,a4:c4,a5:c5,youtube:youtube }
                                         })
                                     }
                                 }

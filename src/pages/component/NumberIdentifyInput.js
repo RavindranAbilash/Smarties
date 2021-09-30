@@ -18,6 +18,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "../../styles/tt.css"
 import * as ml5 from "ml5";
+import {Tesseract} from "tesseract.ts";
 
 
 function Draw(props) {
@@ -29,6 +30,7 @@ function Draw(props) {
 
 
     const [img1,setImg1]=useState(null)
+    const [resq,setResq]=useState([])
 
     const [predictedData, setPredictedData] = useState({
         Product: "",
@@ -37,13 +39,13 @@ function Draw(props) {
 
     let saveableCanvas = null;
     function onSave(event) {
-        console.log("hhhh",event.target)
+        console.log("hhhh", event.target)
         var canvas = document.getElementById("mycanvas");
         let id = crypto.randomBytes(4);
         setImg(saveableCanvas.getSaveData())
         localStorage.setItem("savedDrawing-" + id, img);
         const d = saveableCanvas.canvasContainer.children[1].toDataURL();
-        console.log("d:"+d)
+        console.log("d:" + d)
         setImg1(d)
         items.push(id);
         const a = document.createElement("a");
@@ -56,24 +58,13 @@ function Draw(props) {
         // setPhoto(img1)
         // const p =()=>{return <Predict name={img1} />}
         // p()
-        const classifier = ml5.imageClassifier("MobileNet", modelLoaded);
-        // When the model is loaded
-        function modelLoaded() {
-            console.log('Model Loaded!');
-        }
-        // Put the image to classify inside a variable
-        const image = document.getElementById('image');
-        // Make a prediction with a selected image
-        classifier.predict(image, 5, function(err, results) {
-            // Return the results
-            return results;
-        })
-            .then((results) => {
-                // Set the predictions in the state
-
-                setPredictions(results[0].className)
-                console.log("event",event.currentTarget)
-                if(results[0].className==="matchstick") {
+        //image to text
+        Tesseract
+            .recognize(d)
+            .progress()
+            .then((res) => {
+                setResq(res.text)
+                if(res.text==props.correctAns) {
                     toast.success("Correct Answer", {
                         position: toast.POSITION.TOP_CENTER
                     })
@@ -84,41 +75,27 @@ function Draw(props) {
                     setOpen(true)
                     setMathMarks([mathMarks[0],mathMarks[1],mathMarks[2],mathMarks[3],mathMarks[4],(mathMarks[5]+1)])
                 }
-                // if (predictions=="matchstick"){
-                //     setAnchorEl(event.currentTarget);
-                // }
-
-                console.log("r",results)
-
-
-
             })
-
-        // if(predictions.length > 0){
-        //     predictions = predictions.map((pred, i) => {
-        //         let { className, probability } = pred;
-        //         // round the probability with 2 decimal
-        //         probability = Math.floor(probability * 10000) / 100 + "%";
-        //         return (
-        //             <div key={ i + "" }>{ i+1 }. Prediction: { className } at { probability } </div>
-        //         )
-        //     })
-        // }
-
-
+        /////////////////////////
 
 
 
     }
-    // if(true) {
+    // setPredictions(results[0].className)
+    // if(results[0].className==="nematode, nematode worm, roundworm") {
     //     toast.success("Correct Answer", {
     //         position: toast.POSITION.TOP_CENTER
-    //     });
+    //     })
     //     setMathMarks([mathMarks[0],mathMarks[1],mathMarks[2],mathMarks[3],(mathMarks[4]+1),(mathMarks[5]+1)])
-    // }else{
+    //
+    // }
+    // else{
     //     setOpen(true)
     //     setMathMarks([mathMarks[0],mathMarks[1],mathMarks[2],mathMarks[3],mathMarks[4],(mathMarks[5]+1)])
     // }
+
+
+
 
     useEffect(()=>{
         saveableCanvas.clear();
@@ -197,15 +174,13 @@ function Draw(props) {
                              style={{color: 'white', backgroundColor: themeX.palette.primary.main}}>
                         Check
                     </Button>
-                    {selectionMarks}
-                    {/*<div>{props.correctAns}</div>*/}
+
+                 
                     <ModalVideo style={{width: '100%'}} channel='youtube' autoplay isOpen={isOpen} videoId={props.youtube} onClose={() => setOpen(false)} />
                     <div className="App">
 
                         <img style={{display:"none"}} src={img1 } id="image" width="400" alt="" />
-                        { predictions }
 
-                        {(predictions=="matchstick")? "  correct ":  "wrong"}
                     </div>
 
                 </Grid>

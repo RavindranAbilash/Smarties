@@ -41,8 +41,12 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 let val=[]
-let answer=[]
 let youtube=[]
+let a1=[]
+let a2=[]
+let a3=[]
+let a4=[]
+let a5=[]
 
 
 function getSteps() {
@@ -50,34 +54,34 @@ function getSteps() {
 }
 //Question 1
 function q1(){
-    return( <DrawFruit head={val[0]} correctAns={answer[0]} youtube={youtube[0]}/>);
+    return( <DrawFruit head={val[0]} c1={a1[0]} c2={a2[0]} c3={a3[0]} c4={a4[0]} c5={a4[0]} youtube={youtube[0]}/>);
 }
 function q2(){
-    return( <DrawFruit head={val[1]}  correctAns={answer[1]} youtube={youtube[1]}/>);
+    return( <DrawFruit head={val[1]}  c1={a1[1]} c2={a2[1]} c3={a3[1]} c4={a4[1]} c5={a4[1]} youtube={youtube[1]}/>);
 }
 function q3(){
-    return( <DrawFruit head={val[2]}  correctAns={answer[2]} youtube={youtube[2]}/>);
+    return( <DrawFruit head={val[2]}  c1={a1[2]} c2={a2[2]} c3={a3[2]} c4={a4[2]} c5={a4[2]} youtube={youtube[2]}/>);
 }
 function q4(){
-    return( <DrawFruit head={val[3]}  correctAns={answer[3]} youtube={youtube[3]}/>);
+    return( <DrawFruit head={val[3]}  c1={a1[3]} c2={a2[3]} c3={a3[3]} c4={a4[3]} c5={a4[3]} youtube={youtube[3]}/>);
 }
 function q5(){
-    return( <DrawFruit head={val[4]} correctAns={answer[4] } youtube={youtube[4]}/>);
+    return( <DrawFruit head={val[4]} c1={a1[4]} c2={a2[4]} c3={a3[4]} c4={a4[4]} c5={a4[4]} youtube={youtube[4]}/>);
 }
 function q6(){
-    return( <DrawFruit head={val[5]} correctAns={answer[5]} youtube={youtube[5]}/>);
+    return( <DrawFruit head={val[5]} c1={a1[5]} c2={a2[5]} c3={a3[5]} c4={a4[5]} c5={a4[5]} youtube={youtube[5]}/>);
 }
 function q7(){
-    return( <DrawFruit head={val[6]}  correctAns={answer[6]} youtube={youtube[6]}/>);
+    return( <DrawFruit head={val[6]}  c1={a1[6]} c2={a2[6]} c3={a3[6]} c4={a4[6]} c5={a4[6]} youtube={youtube[6]}/>);
 }
 function q8(){
-    return( <DrawFruit head={val[7]}  correctAns={answer[7]} youtube={youtube[7]}/>);
+    return( <DrawFruit head={val[7]}  c1={a1[7]} c2={a2[7]} c3={a3[7]} c4={a4[7]} c5={a4[7]} youtube={youtube[7]}/>);
 }
 function q9(){
-    return( <DrawFruit head={val[8]}  correctAns={answer[8]} youtube={youtube[8]}/>);
+    return( <DrawFruit head={val[8]}  c1={a1[8]} c2={a2[8]} c3={a3[8]} c4={a4[8]} c5={a4[8]} youtube={youtube[8]}/>);
 }
 function q10(){
-    return( <DrawFruit head={val[9]}  correctAns={answer[9]} youtube={youtube[9]}/>);
+    return( <DrawFruit head={val[9]}  c1={a1[9]} c2={a2[9]} c3={a3[9]} c4={a4[9]} c5={a4[9]} youtube={youtube[9]}/>);
 }
 
 function getStepContent(stepIndex) {
@@ -114,7 +118,11 @@ export default function DrawFruitTimeline(props) {
 
 
     val = (props.location.state.detail)
-    answer=(props.location.state.answer)
+    a1=(props.location.state.a1)
+    a2=(props.location.state.a2)
+    a5=(props.location.state.a5)
+    a3=(props.location.state.a3)
+    a4=(props.location.state.a4)
     youtube=(props.location.state.youtube)
 
 

@@ -20,6 +20,7 @@ import "../../styles/tt.css"
 
 
 import * as ml5 from "ml5";
+import {Tesseract} from "tesseract.ts";
 
 
 
@@ -32,6 +33,7 @@ function Draw(props) {
     const [img,setImg]=useState('')
     const [img1,setImg1]=useState(null)
     const [test,setTest]=useState(false)
+    const [resq,setResq]=useState([])
 
     let saveableCanvas = null;
     function onSave(event) {
@@ -50,63 +52,25 @@ function Draw(props) {
         a.click();
         setItems(items);
         saveableCanvas.clear();
-        // Predict(img1)
-        // setPhoto(img1)
-        // const p =()=>{return <Predict name={img1} />}
-        // p()
-        const classifier = ml5.imageClassifier("MobileNet", modelLoaded);
-        // When the model is loaded
-        function modelLoaded() {
-            console.log('Model Loaded!');
-        }
-        // Put the image to classify inside a variable
-        const image = document.getElementById('image');
-        // Make a prediction with a selected image
-        classifier.predict(image, 5, function(err, results) {
-            // Return the results
-            return results;
-        })
-            .then((results) => {
-                // Set the predictions in the state
 
-                setPredictions(results[0].className)
-                console.log("event",event.currentTarget)
-                if(results[0].className==="matchstick") {
-
-                    // toast(
-                    //     <div style={{ height: "100%", borderLeft: "5px solid green" }}>
-                    //         {/* insert your icon here */}
-                    //         <span style={{ fontSize:"100",fontWeight: "bold", color: "#fff" , background:themeX.palette.primary.main,margin:200}}>Correct Answer</span>{" "}
-                    //     </div>
-                    // );
+        //image to text
+        Tesseract
+            .recognize(d)
+            .progress()
+            .then((res) => {
+                setResq(res.text)
+                if(res.text[0]==props.c1 || res.text[1]==props.c1 || res.text[0]==props.c2|| res.text[0]==props.c3 || res.text[0]==props.c4 || res.text[0]==props.c5  ) {
                     toast.success("Correct Answer", {
                         position: toast.POSITION.TOP_CENTER
-                    });
+                    })
 
                 }
                 else{
                     setOpen(true)
                 }
-                // if (predictions=="matchstick"){
-                //     setAnchorEl(event.currentTarget);
-                // }
-
-                console.log("r",results)
-
-
-
             })
+        /////////////////////////
 
-        // if(predictions.length > 0){
-        //     predictions = predictions.map((pred, i) => {
-        //         let { className, probability } = pred;
-        //         // round the probability with 2 decimal
-        //         probability = Math.floor(probability * 10000) / 100 + "%";
-        //         return (
-        //             <div key={ i + "" }>{ i+1 }. Prediction: { className } at { probability } </div>
-        //         )
-        //     })
-        // }
 
 
 
@@ -147,7 +111,7 @@ function Draw(props) {
                                 canvasHeight={350}
                                 hideGrid
 
-                                brushRadius={8}
+                                brushRadius={4}
                                 style={{
                                     boxShadow:
                                         "0 3px 27px -5px rgba(50, 50, 93, 0.25),    0 8px 16px -8px rgba(0, 0, 0, 0.3)"
@@ -189,9 +153,7 @@ function Draw(props) {
                         <div className="App">
 
                             <img style={{display:"none"}} src={img1 } id="image" width="400" alt="" />
-                            { predictions }
 
-                            {(predictions=="matchstick")? "  correct ":  "wrong"}
                         </div>
 
 
