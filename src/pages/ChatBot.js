@@ -4,6 +4,7 @@ import {ThemeProvider} from 'styled-components'
 import themeX from '../theme/index'
 import {Grid} from '@material-ui/core';
 import bg from "../images/bg.jpeg";
+import Chart from './component/Chart'
 
 const theme = {
     background: 'transparent',
@@ -36,8 +37,7 @@ class Chat extends React.Component {
                                      steps={[
                                          {
                                              id: '1',
-                                             message: 'Hello sara! ' +
-                                                 'How can I help you?',
+                                             message: 'What is your name?',
                                              trigger: '2',
                                          },
                                          {
@@ -47,12 +47,9 @@ class Chat extends React.Component {
                                          },
                                          {
                                              id: '3',
-
-                                             message: 'You are Welcome',
+                                             message: 'Hi {previousValue}, what would you like to know?',
                                              trigger: '4',
                                          },
-
-
                                          {
                                              id: '4',
                                              user: true,
@@ -60,10 +57,11 @@ class Chat extends React.Component {
                                          },
                                          {
                                              id: '5',
-                                             message: 'http://www.example.com',
-
-                                         }
-
+                                             component: (
+                                                 <div> <Chart/> </div>
+                                             ),
+                                             end: true,
+                                         },
                                      ]}
                             />
                         </ThemeProvider>

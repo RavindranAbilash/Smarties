@@ -159,7 +159,7 @@ function Draw(props) {
                                             fontFamily: "Comic Sans MS",
                                             fontStyle: "italic",
                                             fontSize: 50
-                                        }}>Correct Answer}</Typography>
+                                        }}>Correct Answer</Typography>
                                     </Popover>
                                     <ModalVideo style={{width: '100%'}} channel='youtube' autoplay isOpen={isOpen} videoId={props.youtube} onClose={() => setOpen(false)} />
 
