@@ -46,7 +46,7 @@ export default function KiderArt() {
                                         val: ['Draw an apple', 'Draw a  banana', 'Draw Grapes', 'Draw a Pineapple', 'Draw a mango',
                                             'Draw an orange', 'Draw a strawberry', 'Draw an avocado', 'Draw Cherries',
                                             'Draw a Papaya'],
-                                        c1: [5, 'J', 8, 'é', 'mango',
+                                        c1: [" apple", ' banana', ' Grapes', ' Pineapple', 'mango',
                                             'orange', 'strawberry', 'avocado', 'cherries',
                                             'papaya'],
                                         c2: ['<', 'f', 'Q', 'g', 'mango',

@@ -6,9 +6,9 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Identification01 from "../images/Taking/Identification/identification01.png"
-import Identification02 from "../images/Taking/Identification/identification02.png"
-import Identification03 from "../images/Taking/Identification/identification03.png"
-import Identification04 from "../images/Taking/Identification/identification04.png"
+import Identification02 from "../images/Taking/Identification/img.png"
+import Identification03 from "../images/Taking/Identification/img_2.png"
+import Identification04 from "../images/Taking/Identification/img_3.png"
 import Identification05 from "../images/Taking/Identification/identification05.png"
 import Identification06 from "../images/Taking/Identification/identification06.png"
 import Identification07 from "../images/Taking/Identification/identification07.png"
@@ -57,16 +57,16 @@ function getSteps() {
 }
 //Question 1
 function q1(){
-    return( <IdentificationInput head={"1.What is this?"} img={Identification01} correctAns={'ball'} youtube={""}/>);
+    return( <IdentificationInput head={"1.What is this?"} img={Identification01} correctAns={'ball'} youtube={"K1332ez-EhQ"}/>);
 }
 function q2(){
-    return( <IdentificationInput head={"2.What is this?"} img={Identification02} correctAns={'umbrella'} youtube={""}/>);
+    return( <IdentificationInput head={"2.What is this?"} img={Identification02} correctAns={'table'} youtube={"5opcKPIgQB8"}/>);
 }
 function q3(){
-    return( <IdentificationInput head={"3.What is this?"} img={Identification03} correctAns={'Apple'} youtube={""}/>);
+    return( <IdentificationInput head={"3.What is this?"} img={Identification03} correctAns={'chair'} youtube={"3_SmOlL0oVI"}/>);
 }
 function q4(){
-    return( <IdentificationInput head={"4.What is this?"} img={Identification04} correctAns={'dog'} youtube={""}/>);
+    return( <IdentificationInput head={"4.What is this?"} img={Identification04} correctAns={'pencil'} youtube={"Y5z7sl4uYDA"}/>);
 }
 function q5(){
     return( <IdentificationInput head={"5.What is this?"} img={Identification05} correctAns={'elephant'} youtube={""}/>);

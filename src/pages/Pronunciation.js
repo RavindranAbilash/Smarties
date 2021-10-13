@@ -51,27 +51,27 @@ function getSteps() {
 
 //Question 1
 function q1() {
-    return (<PronunciationInput head={"1.Pronounce this word"} word={"Cat"} correctAns={"cat"} youtube={""}/>);
+    return (<PronunciationInput head={"1.Pronounce this word"} word={"table"} correctAns={"table"} youtube={"6vpRCGiCKLw"}/>);
 }
 
 function q2() {
-    return (<PronunciationInput head={"2.Pronounce this word?"} word={"Dog"} correctAns={"dog"} youtube={""}/>);
+    return (<PronunciationInput head={"2.Pronounce this word?"} word={"spoon"} correctAns={"spoon"} youtube={"epPATV5RNM4"}/>);
 }
 
 function q3() {
-    return (<PronunciationInput head={"3.Pronounce this word"} word={"Lion"} correctAns={"lion"} youtube={""}/>);
+    return (<PronunciationInput head={"3.Pronounce this word"} word={"pencil"} correctAns={"pencil"} youtube={"h0CmR9Thkao"}/>);
 }
 
 function q4() {
-    return (<PronunciationInput head={"4.Pronounce this word"} word={"Tiger"} correctAns={"tiger"} youtube={""}/>);
+    return (<PronunciationInput head={"4.Pronounce this word"} word={"pen"} correctAns={"pen"} youtube={"E8hKsurpKto"}/>);
 }
 
 function q5() {
-    return (<PronunciationInput head={"5.Pronounce this word"} word={"Snake"} correctAns={"snake"} youtube={""}/>);
+    return (<PronunciationInput head={"5.Pronounce this word"} word={"fruits"} correctAns={"fruits"} youtube={"2fs_oAzYV84"}/>);
 }
 
 function q6() {
-    return (<PronunciationInput head={"6.Pronounce this word"} word={"Cat"} correctAns={"cat"} youtube={""}/>);
+    return (<PronunciationInput head={"6.Pronounce this word"} word={"doll"} correctAns={"doll"} youtube={"HoLmQ21G5xY"}/>);
 }
 
 function q7() {

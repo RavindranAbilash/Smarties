@@ -33,7 +33,7 @@ function Draw(props) {
     const [img,setImg]=useState('')
     const [img1,setImg1]=useState(null)
     const [test,setTest]=useState(false)
-    const [resq,setResq]=useState([])
+    const [resq,setResq]=useState("")
 
     let saveableCanvas = null;
     function onSave(event) {
@@ -53,22 +53,43 @@ function Draw(props) {
         setItems(items);
         saveableCanvas.clear();
 
-        //image to text
-        Tesseract
-            .recognize(d)
-            .progress()
-            .then((res) => {
-                setResq(res.text)
-                if(res.text[0]==props.c1 || res.text[1]==props.c1 || res.text[0]==props.c2|| res.text[0]==props.c3 || res.text[0]==props.c4 || res.text[0]==props.c5  ) {
+        ///////////////////////////////////////////////////////////////
+        fetch('http://63c2-35-231-55-227.ngrok.io/s')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data.string)
+                if(data.string==props.c1){
+                    console.log("hello")
                     toast.success("Correct Answer", {
-                        position: toast.POSITION.TOP_CENTER
-                    })
+                                        position: toast.POSITION.TOP_CENTER
+                                    })
 
-                }
-                else{
-                    setOpen(true)
-                }
+                                }
+                                else{
+                                    setOpen(true)
+                                }
             })
+        console.log(resq)
+
+
+        /////////////////////////////////////////////////////////////////
+
+        //image to text
+        // Tesseract
+        //     .recognize(d)
+        //     .progress()
+        //     .then((res) => {
+        //         setResq(res.text)
+        //         if(res.text[0]==props.c1 || res.text[1]==props.c1 || res.text[0]==props.c2|| res.text[0]==props.c3 || res.text[0]==props.c4 || res.text[0]==props.c5  ) {
+        //             toast.success("Correct Answer", {
+        //                 position: toast.POSITION.TOP_CENTER
+        //             })
+        //
+        //         }
+        //         else{
+        //             setOpen(true)
+        //         }
+        //     })
         /////////////////////////
 
 
