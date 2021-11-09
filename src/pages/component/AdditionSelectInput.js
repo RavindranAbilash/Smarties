@@ -9,7 +9,7 @@ import {useIsMobileOrTablet} from "./utils/isMobileOrTablet";
 import themeX from "../../theme";
 import Button from "@material-ui/core/Button";
 import {Popover} from "@material-ui/core";
-import {SelectionMarksContext} from "../../Context/SelectionMarksContext";
+
 import {MathMarksContext} from "../../Context/MathMarks"
 
 import ReactDOM from 'react-dom'
@@ -82,7 +82,7 @@ function Draw(props) {
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
 
-    const [selectionMarks, setSelectionMarks]  = useContext(SelectionMarksContext);
+
     const [mathMarks,setMathMarks] = useContext(MathMarksContext)
 
 

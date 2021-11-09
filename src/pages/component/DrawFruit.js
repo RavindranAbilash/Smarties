@@ -12,15 +12,12 @@ import ModalVideo from 'react-modal-video'
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "../../styles/tt.css"
-
-
-
-
-
+import {DrawMarksContext} from "../../Context/DrawMarks";
 
 
 import * as ml5 from "ml5";
 import {Tesseract} from "tesseract.ts";
+import {TalkMarksContext} from "../../Context/TalkMarks";
 
 
 
@@ -54,42 +51,46 @@ function Draw(props) {
         saveableCanvas.clear();
 
         ///////////////////////////////////////////////////////////////
-        fetch('http://63c2-35-231-55-227.ngrok.io/s')
-            .then(response => response.json())
-            .then(data => {
-                console.log(data.string)
-                if(data.string==props.c1){
-                    console.log("hello")
-                    toast.success("Correct Answer", {
-                                        position: toast.POSITION.TOP_CENTER
-                                    })
-
-                                }
-                                else{
-                                    setOpen(true)
-                                }
-            })
-        console.log(resq)
+        // fetch('http://63c2-35-231-55-227.ngrok.io/s')
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         console.log(data.string)
+        //         if(data.string==props.c1){
+        //             console.log("hello")
+        //             toast.success("Correct Answer", {
+        //                                 position: toast.POSITION.TOP_CENTER
+        //                             })
+        //                            setDrawMarks([drawMarks[0],(drawMarks[1]+1),(drawMarks[2]+1)]);
+        //
+        //                         }
+        //                         else{
+        //                             setOpen(true)
+        //                             setDrawMarks([drawMarks[0],drawMarks[1],(drawMarks[2]+1)]);
+        //                         }
+        //     })
+        // console.log(resq)
 
 
         /////////////////////////////////////////////////////////////////
 
         //image to text
-        // Tesseract
-        //     .recognize(d)
-        //     .progress()
-        //     .then((res) => {
-        //         setResq(res.text)
-        //         if(res.text[0]==props.c1 || res.text[1]==props.c1 || res.text[0]==props.c2|| res.text[0]==props.c3 || res.text[0]==props.c4 || res.text[0]==props.c5  ) {
-        //             toast.success("Correct Answer", {
-        //                 position: toast.POSITION.TOP_CENTER
-        //             })
-        //
-        //         }
-        //         else{
-        //             setOpen(true)
-        //         }
-        //     })
+        Tesseract
+            .recognize(d)
+            .progress()
+            .then((res) => {
+                setResq(res.text)
+                if(res.text[0]==props.c1 || res.text[1]==props.c1 || res.text[0]==props.c2|| res.text[0]==props.c3 || res.text[0]==props.c4 || res.text[0]==props.c5  ) {
+                    toast.success("Correct Answer", {
+                        position: toast.POSITION.TOP_CENTER
+                    })
+                    setDrawMarks([drawMarks[0],(drawMarks[1]+1),(drawMarks[2]+1)]);
+
+                }
+                else{
+                    setOpen(true)
+                    setDrawMarks([drawMarks[0],drawMarks[1],(drawMarks[2]+1)]);
+                }
+            })
         /////////////////////////
 
 
@@ -104,6 +105,7 @@ function Draw(props) {
     },[props])
 
     const [isOpen, setOpen] = useState(false)
+    const [drawMarks,setDrawMarks] = useContext(DrawMarksContext)
 
 
 

@@ -1,13 +1,9 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {AppBar, Toolbar, Typography, Button, Box, Container, Grid} from '@material-ui/core';
-import {SelectionMarksContext} from "../Context/SelectionMarksContext";
-import {TotalAdditionContext} from "../Context/totalAddition"
 import {MathMarksContext} from '../Context/MathMarks'
 
 
 export default function ReportMath() {
-    const [selectionMarks, setSelectionMarks]  = useContext(SelectionMarksContext);
-    const [totalAddition,setTotalAddition]=useContext(TotalAdditionContext);
     const[mathMarks,setMathMarks] = useContext(MathMarksContext)
 
     return (

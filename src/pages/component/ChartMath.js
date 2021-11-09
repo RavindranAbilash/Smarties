@@ -9,13 +9,12 @@ import {MathMarksContext} from '../../Context/MathMarks'
 
 function VerticalBar() {
     const[mathMarks,setMathMarks] = useContext(MathMarksContext)
-    console.log(mathMarks[2])
     const data = {
         labels: ['Number Identification', 'Addition'],
         datasets: [
             {
-                label: 'Play with Math',
-                data: [mathMarks[2], mathMarks[5]],
+                label: 'Report of Play with Math',
+                data: [mathMarks[1]/mathMarks[2]*100, mathMarks[4]/mathMarks[5]*100],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -50,12 +49,6 @@ function VerticalBar() {
     };
     return(
         <>
-            <div className='header'>
-
-                <div className='links'>
-
-                </div>
-            </div>
             <Bar data={data} options={options}/>
         </>
         )

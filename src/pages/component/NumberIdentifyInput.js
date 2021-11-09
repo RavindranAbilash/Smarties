@@ -11,7 +11,7 @@ import Button from "@material-ui/core/Button";
 import themeX from "../../theme";
 import ModalVideo from "react-modal-video";
 import {Popover} from "@material-ui/core";
-import {SelectionMarksContext} from "../../Context/SelectionMarksContext";
+
 import {MathMarksContext} from "../../Context/MathMarks"
 
 import { toast, ToastContainer } from 'react-toastify';
@@ -104,7 +104,7 @@ function Draw(props) {
     const [isOpen, setOpen] = useState(false)
 
 
-    const [selectionMarks, setSelectionMarks]  = useContext(SelectionMarksContext);
+
     const [mathMarks,setMathMarks] = useContext(MathMarksContext)
 
     return (

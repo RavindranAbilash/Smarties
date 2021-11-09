@@ -12,7 +12,6 @@ import level1 from "../images/level1.jpg";
 import level2 from "../images/level2.jpg";
 
 import themeX from "../theme";
-import {TotalAdditionContext} from "../Context/totalAddition"
 import {MathMarksContext} from "../Context/MathMarks"
 import {Popover} from "@material-ui/core";
 
@@ -133,6 +132,7 @@ export default function AdditionSelect() {
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
     const [checkStep, setCheckStep] = React.useState(0);
+    const [sug,setSug] =useState(0)
 
 
     const steps = getSteps();
@@ -144,8 +144,16 @@ export default function AdditionSelect() {
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
         setCheckStep((prevCheckStep) => prevCheckStep + 1);
-        // setTotalAddition(checkStep+1)
         setMathsMarks([checkStep+1,mathsMarks[1],mathsMarks[2],mathsMarks[3],mathsMarks[4],mathsMarks[4]])
+        if((mathsMarks[1]/mathsMarks[2])>=0.3 && (mathsMarks[1]/mathsMarks[2])<0.5 ){
+            setSug(Math.floor(mathsMarks[0]/5)+3)
+        }else if((mathsMarks[1]/mathsMarks[2])>=0.5 && (mathsMarks[1]/mathsMarks[2])<0.7){
+            setSug(Math.floor(mathsMarks[0]/5)+4)
+        }else if((mathsMarks[1]/mathsMarks[2])>=0.7 && (mathsMarks[1]/mathsMarks[2])<=1){
+            setSug(Math.floor(mathsMarks[0]/5)+5)
+        }else{
+            setSug(Math.floor(mathsMarks[0]/5)+2)
+        }
 
 
 
@@ -190,8 +198,6 @@ export default function AdditionSelect() {
 
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
-
-    const [totalAddition,setTotalAddition]=useContext(TotalAdditionContext);
     const [mathsMarks,setMathsMarks]=useContext(MathMarksContext)
     return (
         <div className={classes.root} style={{
@@ -234,7 +240,7 @@ export default function AdditionSelect() {
                                     fontFamily: "Comic Sans MS",
                                     fontStyle: "italic",
                                     fontSize: 50
-                                }}>You can do 5th level</Typography>
+                                }}>You can do {sug}th level</Typography>
                             </Popover>
                         </div>
                     ) : (
@@ -269,7 +275,7 @@ export default function AdditionSelect() {
                                         fontFamily: "Comic Sans MS",
                                         fontStyle: "italic",
                                         fontSize: 50
-                                    }}>You can do 5th level</Typography>
+                                    }}>You can do {sug}th level</Typography>
                                 </Popover>
                             </div>
                         ) : (

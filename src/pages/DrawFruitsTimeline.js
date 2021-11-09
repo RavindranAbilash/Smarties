@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {createMuiTheme, makeStyles, MuiThemeProvider} from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -11,6 +11,8 @@ import level2 from '../images/level2.jpg'
 import themeX from "../theme";
 
 import {Popover} from "@material-ui/core";
+import {TalkMarksContext} from "../Context/TalkMarks";
+import {DrawMarksContext} from "../Context/DrawMarks";
 
 const theme = createMuiTheme({
     overrides: {
@@ -113,6 +115,8 @@ function getStepContent(stepIndex) {
 
 export default function DrawFruitTimeline(props) {
     const classes = useStyles();
+    const [drawMarks,setDrawMarks] = useContext(DrawMarksContext)
+    const [sug,setSug] =useState(0)
 
     const [steps1,setSteps1]=useState([{lab:"Question 1",num:1}, {lab:"Question 2",num:2}, {lab:"Question 3",num:3}, {lab:"Question 4",num:4}, {lab:"Question 5",num:5}])
 
@@ -136,6 +140,16 @@ export default function DrawFruitTimeline(props) {
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
         setCheckStep((prevCheckStep) => prevCheckStep + 1);
+        setDrawMarks([(checkStep+1),drawMarks[1],drawMarks[2]]);
+        if((drawMarks[1]/drawMarks[2])>=0.3 && (drawMarks[1]/drawMarks[2])<0.5 ){
+            setSug(Math.floor(drawMarks[0]/5)+3)
+        }else if((drawMarks[1]/drawMarks[2])>=0.5 && (drawMarks[1]/drawMarks[2])<0.7){
+            setSug(Math.floor(drawMarks[0]/5)+4)
+        }else if((drawMarks[1]/drawMarks[2])>=0.7 && (drawMarks[1]/drawMarks[2])<=1){
+            setSug(Math.floor(drawMarks[0]/5)+5)
+        }else{
+            setSug(Math.floor(drawMarks[0]/5)+2)
+        }
 
     };
 
@@ -210,7 +224,7 @@ export default function DrawFruitTimeline(props) {
                                     fontFamily: "Comic Sans MS",
                                     fontStyle: "italic",
                                     fontSize: 50
-                                }}>You can do 5th level</Typography>
+                                }}>You can do {sug}th level</Typography>
                             </Popover>
                         </div>
                     ) : (
@@ -245,7 +259,7 @@ export default function DrawFruitTimeline(props) {
                                         fontFamily: "Comic Sans MS",
                                         fontStyle: "italic",
                                         fontSize: 50
-                                    }}>You can do 5th level</Typography>
+                                    }}>You can do {sug}th level</Typography>
                                 </Popover>
                             </div>
                         ) : (

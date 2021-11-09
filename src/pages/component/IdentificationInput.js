@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 
 import crypto from "crypto";
 import Grid from '@material-ui/core/Grid';
@@ -15,6 +15,8 @@ import Button from "@material-ui/core/Button";
 import themeX from "../../theme";
 import {Popover} from "@material-ui/core";
 import ModalVideo from 'react-modal-video'
+import {TalkMarksContext} from "../../Context/TalkMarks";
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -37,8 +39,10 @@ function Draw(props) {
     const handleClick = (event) => {
         if(transcript === props.correctAns){
             setAnchorEl(event.currentTarget);
+            setTalkMarks([talkMarks[0],(talkMarks[1]+1),(talkMarks[2]+1),talkMarks[3],talkMarks[4],talkMarks[5]])
         }else{
             setOpen(true)
+            setTalkMarks([talkMarks[0],talkMarks[1],(talkMarks[2]+1),talkMarks[3],talkMarks[4],talkMarks[5]])
         }
 
 
@@ -67,6 +71,7 @@ function Draw(props) {
     }
 
     const classes = useStyles();
+    const [talkMarks,setTalkMarks] = useContext(TalkMarksContext)
 
     const {
         transcript,
@@ -96,6 +101,8 @@ function Draw(props) {
     if (!browserSupportsSpeechRecognition) {
         return <span>Browser doesn't support speech recognition.</span>;
     }
+
+
 
 
 
@@ -187,7 +194,7 @@ function Draw(props) {
                                             fontFamily: "Comic Sans MS",
                                             fontStyle: "italic",
                                             fontSize: 50
-                                        }}>{transcript === props.correctAns ? "Correct Answer" : "Wrong Answer"}</Typography>
+                                        }}>Correct Answer</Typography>
                                     </Popover>
                                     <ModalVideo style={{width: '100%'}} channel='youtube' autoplay isOpen={isOpen} videoId={props.youtube} onClose={() => setOpen(false)} />
 

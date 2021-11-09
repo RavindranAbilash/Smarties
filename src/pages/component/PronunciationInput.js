@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import ReactDOM from "react-dom";
 import CanvasDraw from "react-canvas-draw";
 import crypto from "crypto";
@@ -11,6 +11,8 @@ import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognitio
 import MicIcon from '@material-ui/icons/Mic';
 
 import { useIsMobileOrTablet } from "./utils/isMobileOrTablet";
+
+import {TalkMarksContext} from "../../Context/TalkMarks";
 
 import useSpeechToText from "react-hook-speech-to-text";
 import Button from "@material-ui/core/Button";
@@ -38,8 +40,10 @@ function Draw(props) {
     const handleClick = (event) => {
         if(transcript === props.correctAns){
             setAnchorEl(event.currentTarget);
+            setTalkMarks([talkMarks[0],talkMarks[1],talkMarks[2],talkMarks[3],(talkMarks[4]+1),(talkMarks[5]+1)])
         }else{
             setOpen(true)
+            setTalkMarks([talkMarks[0],talkMarks[1],talkMarks[2],talkMarks[3],talkMarks[4],(talkMarks[5]+1)])
         }
 
     };
@@ -66,6 +70,7 @@ function Draw(props) {
         saveableCanvas.clear();
     }
     const classes = useStyles();
+    const [talkMarks,setTalkMarks] = useContext(TalkMarksContext)
 
 
 

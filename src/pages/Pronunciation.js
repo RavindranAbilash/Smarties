@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {createMuiTheme, makeStyles} from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -9,6 +9,7 @@ import PronunciationInput from "../pages/component/PronunciationInput"
 import level1 from "../images/level1.jpg";
 import level2 from "../images/level2.jpg";
 import themeX from "../theme";
+import {TalkMarksContext} from "../Context/TalkMarks";
 
 import {Popover} from "@material-ui/core";
 
@@ -121,6 +122,7 @@ export default function Pronunciation() {
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
     const [checkStep, setCheckStep] = React.useState(0);
+    const [sug,setSug] =useState(0)
 
     const steps = getSteps();
     const [steps1, setSteps1] = useState([{lab: "Question 1", num: 1}, {lab: "Question 2", num: 2}, {
@@ -131,6 +133,16 @@ export default function Pronunciation() {
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
         setCheckStep((prevCheckStep) => prevCheckStep + 1);
+        setTalkMarks([talkMarks[0],talkMarks[1],talkMarks[2],checkStep+1,talkMarks[4],talkMarks[5]])
+        if((talkMarks[4]/talkMarks[5])>=0.3 && (talkMarks[4]/talkMarks[5])<0.5 ){
+            setSug(Math.floor(talkMarks[3]/5)+3)
+        }else if((talkMarks[4]/talkMarks[5])>=0.5 && (talkMarks[4]/talkMarks[5])<0.7){
+            setSug(Math.floor(talkMarks[3]/5)+4)
+        }else if((talkMarks[4]/talkMarks[5])>=0.7 && (talkMarks[4]/talkMarks[5])<=1){
+            setSug(Math.floor(talkMarks[3]/5)+5)
+        }else{
+            setSug(Math.floor(talkMarks[3]/5)+2)
+        }
 
     };
 
@@ -170,6 +182,7 @@ export default function Pronunciation() {
 
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
+    const [talkMarks,setTalkMarks] = useContext(TalkMarksContext)
 
     return (
         <div className={classes.root}>
@@ -207,7 +220,7 @@ export default function Pronunciation() {
                                     fontFamily: "Comic Sans MS",
                                     fontStyle: "italic",
                                     fontSize: 50
-                                }}>You can do 5th level</Typography>
+                                }}>You can do {sug}th level</Typography>
                             </Popover>
                         </div>
                     ) : (
@@ -243,7 +256,7 @@ export default function Pronunciation() {
                                         fontFamily: "Comic Sans MS",
                                         fontStyle: "italic",
                                         fontSize: 50
-                                    }}>You can do 5th level</Typography>
+                                    }}>You can do {sug}th level</Typography>
                                 </Popover>
                             </div>
                         ) : (

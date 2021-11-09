@@ -1,8 +1,13 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {AppBar, Toolbar, Typography, Button, Box, Container, Grid} from '@material-ui/core';
+import {DrawMarksContext} from "../Context/DrawMarks";
+
+
+
 
 
 export default function ReportKinderArt() {
+    const[drawMarks,setDrawMarks] = useContext(DrawMarksContext)
     return (
         <Container>
             <Grid item style={{width: "100%", justifyContent: "center", paddingBottom: 50}}>
@@ -76,7 +81,7 @@ export default function ReportKinderArt() {
                         margin: 2,
                         border: "1px solid black",
                         opacity: 0.6
-                    }}>2</Typography>
+                    }}>{Math.floor(drawMarks[0]/5)+1}</Typography>
                 </Grid>
                 <Grid item md={3} style={{justifyContent: "center"}}>
                     <Typography align="center" style={{
@@ -86,7 +91,7 @@ export default function ReportKinderArt() {
                         margin: 2,
                         border: "1px solid black",
                         opacity: 0.6
-                    }}>7</Typography>
+                    }}>{drawMarks[1]}</Typography>
                 </Grid>
                 <Grid item md={3} style={{justifyContent: "center"}}>
                     <Typography align="center" style={{
@@ -96,7 +101,7 @@ export default function ReportKinderArt() {
                         margin: 2,
                         border: "1px solid black",
                         opacity: 0.6
-                    }}>10</Typography>
+                    }}>{drawMarks[2]}</Typography>
                 </Grid>
 
 
@@ -118,7 +123,7 @@ export default function ReportKinderArt() {
                         margin: 2,
                         border: "1px solid black",
                         opacity: 0.6
-                    }}>4</Typography>
+                    }}>1</Typography>
                 </Grid>
                 <Grid item md={3} style={{justifyContent: "center"}}>
                     <Typography align="center" style={{
@@ -128,7 +133,7 @@ export default function ReportKinderArt() {
                         margin: 2,
                         border: "1px solid black",
                         opacity: 0.6
-                    }}>5</Typography>
+                    }}>0</Typography>
                 </Grid>
                 <Grid item md={3} style={{justifyContent: "center"}}>
                     <Typography align="center" style={{
@@ -138,7 +143,7 @@ export default function ReportKinderArt() {
                         margin: 2,
                         border: "1px solid black",
                         opacity: 0.6
-                    }}>10</Typography>
+                    }}>0</Typography>
                 </Grid>
 
 
@@ -160,7 +165,7 @@ export default function ReportKinderArt() {
                         margin: 2,
                         border: "1px solid black",
                         opacity: 0.6
-                    }}>4</Typography>
+                    }}>1</Typography>
                 </Grid>
                 <Grid item md={3} style={{justifyContent: "center"}}>
                     <Typography align="center" style={{
@@ -170,7 +175,7 @@ export default function ReportKinderArt() {
                         margin: 2,
                         border: "1px solid black",
                         opacity: 0.6
-                    }}>5</Typography>
+                    }}>0</Typography>
                 </Grid>
                 <Grid item md={3} style={{justifyContent: "center"}}>
                     <Typography align="center" style={{
@@ -180,7 +185,7 @@ export default function ReportKinderArt() {
                         margin: 2,
                         border: "1px solid black",
                         opacity: 0.6
-                    }}>10</Typography>
+                    }}>0</Typography>
                 </Grid>
             </Grid>
 

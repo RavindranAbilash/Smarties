@@ -138,6 +138,7 @@ export default function NumberIdentify() {
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
     const [checkStep, setCheckStep] = React.useState(0);
+    const [sug,setSug] =useState(0)
 
     const steps = getSteps();
     const [steps1, setSteps1] = useState([{lab: "Question 1", num: 1}, {lab: "Question 2", num: 2}, {
@@ -149,6 +150,15 @@ export default function NumberIdentify() {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
         setCheckStep((prevCheckStep) => prevCheckStep + 1);
         setMathsMarks([mathsMarks[0],mathsMarks[1],mathsMarks[2],checkStep+1,mathsMarks[4],mathsMarks[5]])
+        if((mathsMarks[4]/mathsMarks[5])>=0.3 && (mathsMarks[4]/mathsMarks[5])<0.5 ){
+            setSug(Math.floor(mathsMarks[3]/5)+3)
+        }else if((mathsMarks[4]/mathsMarks[5])>=0.5 && (mathsMarks[4]/mathsMarks[5])<0.7){
+            setSug(Math.floor(mathsMarks[3]/5)+4)
+        }else if((mathsMarks[4]/mathsMarks[5])>=0.7 && (mathsMarks[4]/mathsMarks[5])<=1){
+            setSug(Math.floor(mathsMarks[3]/5)+5)
+        }else{
+            setSug(Math.floor(mathsMarks[3]/5)+2)
+        }
 
     };
 
@@ -231,7 +241,7 @@ export default function NumberIdentify() {
                                     fontFamily: "Comic Sans MS",
                                     fontStyle: "italic",
                                     fontSize: 50
-                                }}>You can do 5th level</Typography>
+                                }}>You can do {sug}th level</Typography>
                             </Popover>
                         </div>
                     ) : (
@@ -266,7 +276,7 @@ export default function NumberIdentify() {
                                         fontFamily: "Comic Sans MS",
                                         fontStyle: "italic",
                                         fontSize: 50
-                                    }}>You can do 5th level</Typography>
+                                    }}>You can do {sug}th level</Typography>
                                 </Popover>
                             </div>
                         ) : (

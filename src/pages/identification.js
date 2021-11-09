@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {createMuiTheme, makeStyles, MuiThemeProvider} from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
@@ -21,6 +21,7 @@ import level2 from "../images/level2.jpg";
 import themeX from "../theme";
 
 import {Popover} from "@material-ui/core";
+import {TalkMarksContext} from "../Context/TalkMarks";
 
 const theme = createMuiTheme({
     overrides: {
@@ -118,6 +119,7 @@ export default function Identification() {
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
     const [checkStep, setCheckStep] = React.useState(0);
+    const [sug,setSug] =useState(0)
 
     const steps = getSteps();
     const [steps1,setSteps1]=useState([{lab:"Question 1",num:1}, {lab:"Question 2",num:2}, {lab:"Question 3",num:3}, {lab:"Question 4",num:4}, {lab:"Question 5",num:5}])
@@ -125,6 +127,17 @@ export default function Identification() {
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
         setCheckStep((prevCheckStep) => prevCheckStep + 1);
+        setTalkMarks([checkStep+1,talkMarks[1],talkMarks[2],talkMarks[3],talkMarks[4],talkMarks[5]])
+        if((talkMarks[1]/talkMarks[2])>=0.3 && (talkMarks[1]/talkMarks[2])<0.5 ){
+            setSug(Math.floor(talkMarks[0]/5)+3)
+        }else if((talkMarks[1]/talkMarks[2])>=0.5 && (talkMarks[1]/talkMarks[2])<0.7){
+            setSug(Math.floor(talkMarks[0]/5)+4)
+        }else if((talkMarks[1]/talkMarks[2])>=0.7 && (talkMarks[1]/talkMarks[2])<=1){
+            setSug(Math.floor(talkMarks[0]/5)+5)
+        }else{
+            setSug(Math.floor(talkMarks[0]/5)+2)
+        }
+
 
     };
 
@@ -160,6 +173,7 @@ export default function Identification() {
 
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
+    const [talkMarks,setTalkMarks] = useContext(TalkMarksContext)
 
     return (
         <div className={classes.root} >
@@ -197,7 +211,7 @@ export default function Identification() {
                                     fontFamily: "Comic Sans MS",
                                     fontStyle: "italic",
                                     fontSize: 50
-                                }}>You can do 5th level</Typography>
+                                }}>You can do {sug}th level</Typography>
                             </Popover>
                         </div>
                     ) : (
@@ -230,7 +244,7 @@ export default function Identification() {
                                         fontFamily: "Comic Sans MS",
                                         fontStyle: "italic",
                                         fontSize: 50
-                                    }}>You can do 5th level</Typography>
+                                    }}>You can do {sug}th level</Typography>
                                 </Popover>
                             </div>
                         ) : (

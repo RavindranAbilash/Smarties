@@ -30,20 +30,22 @@ import Pronunciation from './pages/Pronunciation'
 import Chat from './pages/ChatBot'
 import Chips from './pages/check'
 import ChatEnter from "./pages/ChatEnter";
-import {SelectionMarksContext} from "./Context/SelectionMarksContext";
-import {TotalAdditionContext} from './Context/totalAddition'
 import {MathMarksContext} from './Context/MathMarks'
+import {TalkMarksContext} from './Context/TalkMarks'
+import {DrawMarksContext} from "./Context/DrawMarks";
 
 function App() {
-    const [selectionMarks, setSelectionMarks] = useState(0);
-    const[totalAddition,setTotalAddition] = useState(0);
     const[mathMarks,setMathMarks] = useState([0,0,0,0,0,0]);
+    const[talkMarks,setTalkMarks] = useState([0,0,0,0,0,0]);
+    const[drawMarks,setDrawMarks] = useState([0,0,0]);
+
 
 
     return (
-        <SelectionMarksContext.Provider value={[selectionMarks, setSelectionMarks]}>
-            <TotalAdditionContext.Provider value={[totalAddition,setTotalAddition]}>
+
                 <MathMarksContext.Provider value={[mathMarks,setMathMarks]}>
+                    <TalkMarksContext.Provider value={[talkMarks,setTalkMarks]}>
+                        <DrawMarksContext.Provider value={[drawMarks,setDrawMarks]}>
         <BrowserRouter>
             <MainLayout>
                 <Switch>
@@ -76,9 +78,10 @@ function App() {
                 </Switch>
             </MainLayout>
         </BrowserRouter>
+                        </DrawMarksContext.Provider>
+                </TalkMarksContext.Provider>
                 </MathMarksContext.Provider>
-                </TotalAdditionContext.Provider>
-        </SelectionMarksContext.Provider>
+
     );
 }
 

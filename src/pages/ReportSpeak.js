@@ -1,8 +1,10 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {AppBar, Toolbar, Typography, Button, Box, Container, Grid} from '@material-ui/core';
+import {TalkMarksContext} from "../Context/TalkMarks";
 
 
 export default function ReportSpeak() {
+    const[talkMarks,setTalkMarks] = useContext(TalkMarksContext)
     return (
         <Container>
             <Grid item style={{width: "100%", justifyContent: "center", paddingBottom: 50}}>
@@ -76,7 +78,7 @@ export default function ReportSpeak() {
                         margin: 2,
                         border: "1px solid black",
                         opacity: 0.6
-                    }}>2</Typography>
+                    }}>{Math.floor(talkMarks[0]/5)+1}</Typography>
                 </Grid>
                 <Grid item md={3} style={{justifyContent: "center"}}>
                     <Typography align="center" style={{
@@ -86,7 +88,7 @@ export default function ReportSpeak() {
                         margin: 2,
                         border: "1px solid black",
                         opacity: 0.6
-                    }}>7</Typography>
+                    }}>{talkMarks[1]}</Typography>
                 </Grid>
                 <Grid item md={3} style={{justifyContent: "center"}}>
                     <Typography align="center" style={{
@@ -96,7 +98,7 @@ export default function ReportSpeak() {
                         margin: 2,
                         border: "1px solid black",
                         opacity: 0.6
-                    }}>10</Typography>
+                    }}>{talkMarks[2]}</Typography>
                 </Grid>
 
 
@@ -118,7 +120,7 @@ export default function ReportSpeak() {
                         margin: 2,
                         border: "1px solid black",
                         opacity: 0.6
-                    }}>4</Typography>
+                    }}>{Math.floor(talkMarks[3]/5)+1}</Typography>
                 </Grid>
                 <Grid item md={3} style={{justifyContent: "center"}}>
                     <Typography align="center" style={{
@@ -128,7 +130,7 @@ export default function ReportSpeak() {
                         margin: 2,
                         border: "1px solid black",
                         opacity: 0.6
-                    }}>5</Typography>
+                    }}>{talkMarks[4]}</Typography>
                 </Grid>
                 <Grid item md={3} style={{justifyContent: "center"}}>
                     <Typography align="center" style={{
@@ -138,7 +140,7 @@ export default function ReportSpeak() {
                         margin: 2,
                         border: "1px solid black",
                         opacity: 0.6
-                    }}>10</Typography>
+                    }}>{talkMarks[5]}</Typography>
                 </Grid>
             </Grid>
 
